@@ -44,10 +44,11 @@ void Graphs::ListGraph::print(std::ostream& out)
 	out << "Data structure is empty" << std::endl;
 }
 
-void Graphs::ListGraph::setNieghbourhoodList(size_t** edgeList, size_t vertexNum, size_t edgeNum)
+void Graphs::ListGraph::setNieghbourhoodList(size_t** edgeList, size_t vertexNum, size_t edgeNum, bool isDirected)
 {
 	this->vertexNum = vertexNum;
 	this->edgeNum = edgeNum;
+	this->isDirected = isDirected;
 
 	this->neighbourhoodList = new Graphs::GraphListNode*[vertexNum];
 

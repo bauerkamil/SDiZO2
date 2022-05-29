@@ -80,10 +80,11 @@ void Graphs::MatrixGraph::addEdge(size_t value, size_t vertex1, size_t vertex2)
 	this->incidenceMatrix = newMatrix;
 }
 
-void Graphs::MatrixGraph::setIncidenceMatrix(size_t** edgeList, size_t vertexNum, size_t edgeNum)
+void Graphs::MatrixGraph::setIncidenceMatrix(size_t** edgeList, size_t vertexNum, size_t edgeNum, bool isDirected)
 {
 	this->vertexNum = vertexNum;
 	this->edgeNum = edgeNum;
+	this->isDirected = isDirected;
 
 	int** newMatrix = new int* [vertexNum];
 

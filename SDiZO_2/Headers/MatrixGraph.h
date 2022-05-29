@@ -19,7 +19,7 @@ namespace Graphs
 		// adds edge between two vertexes
 		virtual void addEdge(size_t value, size_t vertex1, size_t vertex2);
 		//clears any previous matrix and creates new based on given arguments - edgeList[edgeNum][3] and vertexNum
-		virtual void setIncidenceMatrix(size_t** edgeList, size_t vertexNum, size_t edgeNum);
+		virtual void setIncidenceMatrix(size_t** edgeList, size_t vertexNum, size_t edgeNum, bool isDirected);
 		// returns incidence matrix
 		virtual int** getIncidenceMatrix();
 		//returns number of vertexes

@@ -21,9 +21,13 @@ private:
 	FillGraph* fillGraph;
 	const int FILL_WIDTH = 100;
 	bool isFinished = false;
+	const std::invalid_argument* invalid_arg = new std::invalid_argument("Invalid argument");
 
 	void printOptions();
 	int getOption();
 	std::string getFileName();
+	size_t getVertexNum();
+	size_t getDensity();
+	bool getDirectory();
 	void chooseOption(int option);
 };

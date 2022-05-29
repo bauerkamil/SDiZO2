@@ -16,7 +16,7 @@ namespace Graphs
 		// prints the matrix in console
 		virtual void print(std::ostream& out);
 		//clears previous list and fills based on values of given args - edgeList[edgeNum][3] and vertexNum
-		virtual void setNieghbourhoodList(size_t** edgeList, size_t vertexNum, size_t edgeNum);
+		virtual void setNieghbourhoodList(size_t** edgeList, size_t vertexNum, size_t edgeNum, bool isDirected);
 		//returns neighbourhood list
 		virtual GraphListNode** getNieghbourhoodList();
 		//returns number of vertexes

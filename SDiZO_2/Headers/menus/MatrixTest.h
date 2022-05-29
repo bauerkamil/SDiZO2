@@ -24,5 +24,8 @@ private:
 	void printOptions();
 	int getOption();
 	std::string getFileName();
+	size_t getVertexNum();
+	size_t getDensity();
+	bool getDirectory();
 	void chooseOption(int option);
 };
