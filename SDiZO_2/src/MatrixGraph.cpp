@@ -106,9 +106,9 @@ void Graphs::MatrixGraph::setIncidenceMatrix(size_t** edgeList, size_t vertexNum
 
 		if (isDirected)
 		{
-			int minusValue = 0 - edgeList[i][2];
-			this->incidenceMatrix[edgeList[i][1]][i] = minusValue;
-
+			int value = (int) edgeList[i][2];
+			int minusValue = 0 - value;
+			newMatrix[edgeList[i][1]][i] = minusValue;
 		}
 		else
 			newMatrix[edgeList[i][1]][i] = edgeList[i][2];

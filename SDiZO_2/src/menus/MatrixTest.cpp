@@ -1,11 +1,12 @@
 #include "../../Headers/menus/MatrixTest.h"
 
-MatrixTest::MatrixTest(FillGraph* fillGraph, Graphs::Kruskal* kruskalAlg, Graphs::Prim* primAlg, Graphs::Dijkstra* dijkstraAlg)
+MatrixTest::MatrixTest(FillGraph* fillGraph, Graphs::Kruskal* kruskalAlg, Graphs::Prim* primAlg, Graphs::Dijkstra* dijkstraAlg, Graphs::BellmanFord* bfAlg)
 {
 	this->fillGraph = fillGraph;
 	this->kruskalAlg = kruskalAlg;
 	this->primAlg = primAlg;
 	this->dijkstraAlg = dijkstraAlg;
+	this->bfAlg = bfAlg;
 }
 
 MatrixTest::~MatrixTest()
@@ -36,6 +37,8 @@ void MatrixTest::printOptions()
 		<< "3. Generate random graph\n"
 		<< "4. Get MST - Prim algorithm\n"
 		<< "5. Get MST - Kruskal algorithm\n"
+		<< "6. Get shortest path - Dijkstra's algorithm\n"
+		<< "7. Get shortest path - Bellman-Ford's algorithm\n"
 		<< "0. Exit" << std::endl;
 }
 
@@ -112,7 +115,7 @@ void MatrixTest::chooseOption(int choice)
 	{
 		if (testGraph->getIsDirected() == true)
 		{
-			std::cout << "The graph ought not be directed" << std::endl;
+			std::cout << "The graph ought not to be directed\n" << std::endl;
 		}
 		else
 		{
@@ -134,7 +137,7 @@ void MatrixTest::chooseOption(int choice)
 	{
 		if (testGraph->getIsDirected() == true)
 		{
-			std::cout << "Changing to not directed" << std::endl;
+			std::cout << "The graph ought not to be directed\n" << std::endl;
 		}
 		else
 		{
@@ -146,6 +149,54 @@ void MatrixTest::chooseOption(int choice)
 			catch (std::exception e)
 			{
 				std::cout << e.what();
+			}
+
+		}
+	}
+	break;
+	case 6:
+	{
+		if (testGraph->getIsDirected() == false)
+		{
+			std::cout << "The graph ought to be directed\n" << std::endl;
+		}
+		else
+		{
+			try
+			{
+				size_t source = getVertex();
+				int** paths = dijkstraAlg->getMinPaths(testGraph, source);
+				dijkstraAlg->printMinPaths(std::cout, paths, testGraph->getVertexNumber());
+				size_t destination = getVertex();
+				dijkstraAlg->printMinPath(std::cout, paths, testGraph->getVertexNumber(), destination);
+			}
+			catch (std::exception e)
+			{
+				std::cout << e.what() << std::endl;
+			}
+
+		}
+	}
+	break;
+	case 7:
+	{
+		if (testGraph->getIsDirected() == false)
+		{
+			std::cout << "The graph ought to be directed" << std::endl;
+		}
+		else
+		{
+			try
+			{
+				size_t source = getVertex();
+				int** paths = bfAlg->getMinPaths(testGraph, source);
+				bfAlg->printMinPaths(std::cout, paths, testGraph->getVertexNumber());
+				size_t destination = getVertex();
+				bfAlg->printMinPath(std::cout, paths, testGraph->getVertexNumber(), destination);
+			}
+			catch (std::exception e)
+			{
+				std::cout << e.what() << std::endl;
 			}
 
 		}
@@ -164,6 +215,15 @@ void MatrixTest::chooseOption(int choice)
 size_t MatrixTest::getVertexNum()
 {
 	std::cout << "Please enter number of vertices\n";
+	size_t option;
+	std::cin >> option;
+
+	return option;
+}
+
+size_t MatrixTest::getVertex()
+{
+	std::cout << "Please enter number of vertex\n";
 	size_t option;
 	std::cin >> option;
 

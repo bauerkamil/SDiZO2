@@ -33,7 +33,7 @@ namespace Graphs
 		const std::out_of_range* matrix_null = new std::out_of_range("Structure pointer is null");
 
 	private:
-		GraphListNode** neighbourhoodList;
+		GraphListNode** incidenceMatrix;
 		size_t vertexNum;
 		size_t edgeNum;
 		bool isDirected;

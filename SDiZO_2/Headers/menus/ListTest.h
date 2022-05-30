@@ -7,12 +7,13 @@
 #include "../algorithms/Kruskal.h"
 #include "../algorithms/Prim.h"
 #include "../algorithms/Dijkstra.h"
+#include "../algorithms/BellmanFord.h"
 #include "../utils/FillGraph.h"
 
 class ListTest
 {
 public:
-	ListTest(FillGraph* fillGraph, Graphs::Kruskal* kruskalAlg, Graphs::Prim* primAlg, Graphs::Dijkstra* dijkstraAlg);
+	ListTest(FillGraph* fillGraph, Graphs::Kruskal* kruskalAlg, Graphs::Prim* primAlg, Graphs::Dijkstra* dijkstraAlg, Graphs::BellmanFord* bfAlg);
 	~ListTest();
 	void run();
 private:
@@ -20,6 +21,7 @@ private:
 	Graphs::Kruskal* kruskalAlg;
 	Graphs::Prim* primAlg;
 	Graphs::Dijkstra* dijkstraAlg;
+	Graphs::BellmanFord* bfAlg;
 	FillGraph* fillGraph;
 	const int FILL_WIDTH = 100;
 	bool isFinished = false;

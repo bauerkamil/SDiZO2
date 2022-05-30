@@ -2,7 +2,7 @@
 
 Graphs::ListGraph::ListGraph(bool isDirected)
 {
-	this->neighbourhoodList = nullptr;
+	this->incidenceMatrix = nullptr;
 	this->edgeNum = 0;
 	this->vertexNum = 0;
 	this->isDirected = isDirected;
@@ -15,12 +15,12 @@ Graphs::ListGraph::~ListGraph()
 
 void Graphs::ListGraph::print(std::ostream& out)
 {
-	if (this->vertexNum > 0 && this->neighbourhoodList != nullptr)
+	if (this->vertexNum > 0 && this->incidenceMatrix != nullptr)
 	{
 		for (size_t i = 0; i < vertexNum; i++)
 		{
 			out << i << ". ";
-			GraphListNode* node = this->neighbourhoodList[i];
+			GraphListNode* node = this->incidenceMatrix[i];
 			out << "[";
 			while (node)
 			{
@@ -50,11 +50,11 @@ void Graphs::ListGraph::setNieghbourhoodList(size_t** edgeList, size_t vertexNum
 	this->edgeNum = edgeNum;
 	this->isDirected = isDirected;
 
-	this->neighbourhoodList = new Graphs::GraphListNode*[vertexNum];
+	this->incidenceMatrix = new Graphs::GraphListNode*[vertexNum];
 
 	for (size_t i = 0; i < vertexNum; i++)
 	{
-		this->neighbourhoodList[i] = nullptr;
+		this->incidenceMatrix[i] = nullptr;
 	}
 
 	if (!isDirected)
@@ -87,7 +87,7 @@ void Graphs::ListGraph::setNieghbourhoodList(size_t** edgeList, size_t vertexNum
 
 Graphs::GraphListNode** Graphs::ListGraph::getNieghbourhoodList()
 {
-	return neighbourhoodList;
+	return incidenceMatrix;
 }
 
 
@@ -113,8 +113,8 @@ void Graphs::ListGraph::clear()
 	{
 		//delete this->neighbourhoodList[i];
 	}
-	delete[] this->neighbourhoodList;
-	this->neighbourhoodList = nullptr;
+	delete[] this->incidenceMatrix;
+	this->incidenceMatrix = nullptr;
 	this->edgeNum = 0;
 	this->vertexNum = 0;
 }
@@ -125,9 +125,9 @@ void Graphs::ListGraph::addEnd(size_t vertex, Edge* edge)
 	{
 		throw* invalid_vertex;
 	}
-	if (neighbourhoodList[vertex] != nullptr)
+	if (incidenceMatrix[vertex] != nullptr)
 	{
-		GraphListNode* next = neighbourhoodList[vertex];
+		GraphListNode* next = incidenceMatrix[vertex];
 		while (next->nextNode != nullptr)
 		{
 			next = next->nextNode;
@@ -138,6 +138,6 @@ void Graphs::ListGraph::addEnd(size_t vertex, Edge* edge)
 	}
 	else
 	{
-		neighbourhoodList[vertex] = new GraphListNode(edge, nullptr, nullptr);
+		incidenceMatrix[vertex] = new GraphListNode(edge, nullptr, nullptr);
 	}
 }

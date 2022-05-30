@@ -8,6 +8,7 @@
 #include "../algorithms/Kruskal.h"
 #include "../algorithms/Prim.h"
 #include "../algorithms/Dijkstra.h"
+#include "../algorithms/BellmanFord.h"
 #include "../utils/FillGraph.h"
 
 class Menu
@@ -27,6 +28,7 @@ private:
 	Graphs::Kruskal* kruskalAlg;
 	Graphs::Prim* primAlg;
 	Graphs::Dijkstra* dijkstraAlg;
+	Graphs::BellmanFord* bfAlg;
 	FillGraph* fillGraph;
 	bool isFinished;
 };

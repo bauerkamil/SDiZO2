@@ -1,11 +1,12 @@
 #include "../../Headers/menus/ListTest.h"
 
-ListTest::ListTest(FillGraph* fillGraph, Graphs::Kruskal* kruskalAlg, Graphs::Prim* primAlg, Graphs::Dijkstra* dijkstraAlg)
+ListTest::ListTest(FillGraph* fillGraph, Graphs::Kruskal* kruskalAlg, Graphs::Prim* primAlg, Graphs::Dijkstra* dijkstraAlg, Graphs::BellmanFord* bfAlg)
 {
 	this->fillGraph = fillGraph;
 	this->kruskalAlg = kruskalAlg;
 	this->primAlg = primAlg;
 	this->dijkstraAlg = dijkstraAlg;
+	this->bfAlg = bfAlg;
 }
 
 ListTest::~ListTest()
@@ -114,7 +115,7 @@ void ListTest::chooseOption(int choice)
 	{
 		if (testGraph->getIsDirected() == true)
 		{
-			std::cout << "The graph ought not to be directed" << std::endl;
+			std::cout << "The graph ought not to be directed\n" << std::endl;
 		}
 		else
 		{
@@ -136,7 +137,7 @@ void ListTest::chooseOption(int choice)
 	{
 		if (testGraph->getIsDirected() == true)
 		{
-			std::cout << "The graph ought not to be directed" << std::endl;
+			std::cout << "The graph ought not to be directed\n" << std::endl;
 		}
 		else
 		{
@@ -157,13 +158,41 @@ void ListTest::chooseOption(int choice)
 	{
 		if (testGraph->getIsDirected() == false)
 		{
-			std::cout << "The graph ought to be directed" << std::endl;
+			std::cout << "The graph ought to be directed\n" << std::endl;
 		}
 		else
 		{
 			try
 			{
-				int** paths = dijkstraAlg->getMinPaths(testGraph, 0);
+				size_t source = getVertex();
+				int** paths = dijkstraAlg->getMinPaths(testGraph, source);
+				dijkstraAlg->printMinPaths(std::cout, paths, testGraph->getVertexNumber());
+				size_t destination = getVertex();
+				dijkstraAlg->printMinPath(std::cout, paths, testGraph->getVertexNumber(), destination);
+			}
+			catch (std::exception e)
+			{
+				std::cout << e.what() << std::endl;
+			}
+
+		}
+	}
+	break;
+	case 7:
+	{
+		if (testGraph->getIsDirected() == false)
+		{
+			std::cout << "The graph ought to be directed\n" << std::endl;
+		}
+		else
+		{
+			try
+			{
+				size_t source = getVertex();
+				int** paths = bfAlg->getMinPaths(testGraph, source);
+				bfAlg->printMinPaths(std::cout, paths, testGraph->getVertexNumber());
+				size_t destination = getVertex();
+				bfAlg->printMinPath(std::cout, paths, testGraph->getVertexNumber(), destination);
 			}
 			catch (std::exception e)
 			{

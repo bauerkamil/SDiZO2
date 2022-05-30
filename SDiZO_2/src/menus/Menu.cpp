@@ -8,8 +8,9 @@ Menu::Menu() {
 	this->kruskalAlg = new Graphs::Kruskal();
 	this->primAlg = new Graphs::Prim();
 	this->dijkstraAlg = new Graphs::Dijkstra();
-	this->matrixTest = new MatrixTest(fillGraph, kruskalAlg, primAlg, dijkstraAlg);
-	this->listTest = new ListTest(fillGraph, kruskalAlg, primAlg, dijkstraAlg);
+	this->bfAlg = new Graphs::BellmanFord();
+	this->matrixTest = new MatrixTest(fillGraph, kruskalAlg, primAlg, dijkstraAlg, bfAlg);
+	this->listTest = new ListTest(fillGraph, kruskalAlg, primAlg, dijkstraAlg, bfAlg);
 
 	isFinished = false;
 
