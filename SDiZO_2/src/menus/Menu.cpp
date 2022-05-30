@@ -7,8 +7,9 @@ Menu::Menu() {
 	this->fillGraph = new FillGraph();
 	this->kruskalAlg = new Graphs::Kruskal();
 	this->primAlg = new Graphs::Prim();
-	this->matrixTest = new MatrixTest(fillGraph, kruskalAlg, primAlg);
-	this->listTest = new ListTest(fillGraph, kruskalAlg, primAlg);
+	this->dijkstraAlg = new Graphs::Dijkstra();
+	this->matrixTest = new MatrixTest(fillGraph, kruskalAlg, primAlg, dijkstraAlg);
+	this->listTest = new ListTest(fillGraph, kruskalAlg, primAlg, dijkstraAlg);
 
 	isFinished = false;
 

@@ -27,12 +27,12 @@ void Graphs::ListGraph::print(std::ostream& out)
 				if (node->nextNode)
 					out << "(F: " << node->edge->source
 					<< " To: " << node->edge->destination
-					<< " V: " << node->edge->value
+					<< " V: " << node->edge->weight
 					<< ") <-> ";
 				else
 					out << "(F: " << node->edge->source
 					<< " To: " << node->edge->destination
-					<< " V: " << node->edge->value
+					<< " V: " << node->edge->weight
 					<< ")";
 				node = node->nextNode;
 			}

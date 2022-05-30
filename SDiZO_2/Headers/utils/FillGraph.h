@@ -30,4 +30,6 @@ private:
 	size_t vertexNum;
 
 	void clear();
+	void fillRandomDirected(size_t vertexNum, size_t edgeNum, size_t densityPercent);
+	void fillRandomNonDirected(size_t vertexNum, size_t edgeNum, size_t densityPercent);
 };

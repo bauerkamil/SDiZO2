@@ -1,10 +1,11 @@
 #include "../../Headers/menus/ListTest.h"
 
-ListTest::ListTest(FillGraph* fillGraph, Graphs::Kruskal* kruskalAlg, Graphs::Prim* primAlg)
+ListTest::ListTest(FillGraph* fillGraph, Graphs::Kruskal* kruskalAlg, Graphs::Prim* primAlg, Graphs::Dijkstra* dijkstraAlg)
 {
 	this->fillGraph = fillGraph;
 	this->kruskalAlg = kruskalAlg;
 	this->primAlg = primAlg;
+	this->dijkstraAlg = dijkstraAlg;
 }
 
 ListTest::~ListTest()
@@ -33,8 +34,10 @@ void ListTest::printOptions()
 		<< "1. Print graph\n"
 		<< "2. Fill from file\n"
 		<< "3. Generate random graph\n"
-		<< "4. Get MST - Prim algorithm\n"
-		<< "5. Get MST - Kruskal algorithm\n"
+		<< "4. Get MST - Prim's algorithm\n"
+		<< "5. Get MST - Kruskal's algorithm\n"
+		<< "6. Get shortest path - Dijkstra's algorithm\n"
+		<< "7. Get shortest path - Bellman-Ford's algorithm\n"
 		<< "0. Exit" << std::endl;
 }
 
@@ -111,7 +114,7 @@ void ListTest::chooseOption(int choice)
 	{
 		if (testGraph->getIsDirected() == true)
 		{
-			std::cout << "The graph ought not be directed" << std::endl;
+			std::cout << "The graph ought not to be directed" << std::endl;
 		}
 		else
 		{
@@ -133,7 +136,7 @@ void ListTest::chooseOption(int choice)
 	{
 		if (testGraph->getIsDirected() == true)
 		{
-			std::cout << "Changing to not directed" << std::endl;
+			std::cout << "The graph ought not to be directed" << std::endl;
 		}
 		else
 		{
@@ -141,6 +144,26 @@ void ListTest::chooseOption(int choice)
 			{
 				Graphs::Edge** mst = this->kruskalAlg->getMST(testGraph);
 				kruskalAlg->printMST(std::cout, mst, testGraph->getVertexNumber());
+			}
+			catch (std::exception e)
+			{
+				std::cout << e.what() << std::endl;
+			}
+
+		}
+	}
+	break;
+	case 6:
+	{
+		if (testGraph->getIsDirected() == false)
+		{
+			std::cout << "The graph ought to be directed" << std::endl;
+		}
+		else
+		{
+			try
+			{
+				int** paths = dijkstraAlg->getMinPaths(testGraph, 0);
 			}
 			catch (std::exception e)
 			{
@@ -173,6 +196,14 @@ size_t ListTest::getVertexNum()
 	return option;
 }
 
+size_t ListTest::getVertex()
+{
+	std::cout << "Please enter number of vertex\n";
+	size_t option;
+	std::cin >> option;
+
+	return option;
+}
 size_t ListTest::getDensity()
 {
 	std::cout << "Please enter density of graph\n";

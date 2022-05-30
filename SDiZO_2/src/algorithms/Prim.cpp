@@ -10,7 +10,96 @@ Graphs::Prim::~Prim()
 
 Graphs::Edge** Graphs::Prim::getMST(MatrixGraph* graph)
 {
-	return nullptr;
+	size_t edgeNum = graph->getEdgeNumber();
+	size_t vertexNum = graph->getVertexNumber();
+	int** incidenceMatrix = graph->getIncidenceMatrix();
+	if (incidenceMatrix == nullptr || vertexNum == 0)
+	{
+		throw* structure_null;
+	}
+	if (vertexNum == 1 || edgeNum == 0)
+	{
+		return nullptr;
+	}
+
+	EdgeHeapMin* heap = new EdgeHeapMin(2 * edgeNum);
+
+	Edge** mst = new Edge * [vertexNum - 1];
+
+	bool* visitedVertices = new bool[vertexNum];
+	for (size_t i = 0; i < vertexNum; i++)
+	{
+		visitedVertices[i] = false;
+	}
+
+	for (size_t i = 0; i < edgeNum; i++)
+	{
+		if (incidenceMatrix[0][i] != 0)
+		{
+			size_t destination;
+			size_t weight = incidenceMatrix[0][i];
+
+			for (size_t j = 1; j < vertexNum; j++)
+			{
+				if (incidenceMatrix[j][i] != 0)
+				{
+					destination = j;
+				}
+			}
+
+			Edge* newEdge = new Graphs::Edge(weight, 0, destination);
+			std::cout << newEdge->destination << " " << newEdge->weight << std::endl;
+			heap->add(newEdge);
+		}
+	}
+
+
+	visitedVertices[0] = true;
+
+	size_t pos = 0;
+	for (size_t k = 0; k < 2 * edgeNum; k++)
+	{
+		if (!visitedEveryVertex(visitedVertices, vertexNum))
+		{
+			Edge* edge = heap->extractRoot();
+
+
+			if (visitedVertices[edge->destination] == false)
+			{
+				for (size_t i = 0; i < edgeNum; i++)
+				{
+					if (incidenceMatrix[edge->destination][i] != 0)
+					{
+						size_t destination2;
+						size_t weight = incidenceMatrix[edge->destination][i];
+
+						for (size_t j = 0; j < vertexNum; j++)
+						{
+							if (incidenceMatrix[j][i] != 0 && j != edge->destination)
+							{
+								destination2 = j;
+							}
+						}
+
+						Edge* newEdge = new Graphs::Edge(weight, edge->destination, destination2);
+						heap->add(newEdge);
+
+						//std::cout << newEdge->source << newEdge->destination << " " << newEdge->weight << std::endl;
+					}
+				}
+
+				visitedVertices[edge->destination] = true;
+
+				mst[pos] = edge;
+				pos++;
+			}
+		}
+		else
+			break;
+	}
+
+	delete heap;
+	return mst;
 }
 
 Graphs::Edge** Graphs::Prim::getMST(ListGraph* graph)
@@ -111,7 +200,7 @@ void Graphs::Prim::printMST(std::ostream& out, Graphs::Edge** mst, size_t vertex
 			}
 			out << "(F: " << edge->source
 				<< " To: " << edge->destination
-				<< " V: " << edge->value
+				<< " V: " << edge->weight
 				<< ")\n";
 		}
 

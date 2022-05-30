@@ -1,3 +1,4 @@
-﻿  FillGraph.cpp
-C:\Users\kamil\OneDrive - Politechnika Wroclawska\Desktop\studia\sdizo_projekt\project2\SDiZO_2\SDiZO_2\src\utils\FillGraph.cpp(9,22): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+﻿  MatrixTest.cpp
+  Menu.cpp
+  Generowanie kodu...
   SDiZO_2.vcxproj -> C:\Users\kamil\OneDrive - Politechnika Wroclawska\Desktop\studia\sdizo_projekt\project2\SDiZO_2\x64\Debug\SDiZO_2.exe

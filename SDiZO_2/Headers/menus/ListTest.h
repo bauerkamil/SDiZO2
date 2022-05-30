@@ -6,18 +6,20 @@
 #include "../Edge.h"
 #include "../algorithms/Kruskal.h"
 #include "../algorithms/Prim.h"
+#include "../algorithms/Dijkstra.h"
 #include "../utils/FillGraph.h"
 
 class ListTest
 {
 public:
-	ListTest(FillGraph* fillGraph, Graphs::Kruskal* kruskalAlg, Graphs::Prim* primAlg);
+	ListTest(FillGraph* fillGraph, Graphs::Kruskal* kruskalAlg, Graphs::Prim* primAlg, Graphs::Dijkstra* dijkstraAlg);
 	~ListTest();
 	void run();
 private:
 	Graphs::ListGraph* testGraph = new Graphs::ListGraph(false);
 	Graphs::Kruskal* kruskalAlg;
 	Graphs::Prim* primAlg;
+	Graphs::Dijkstra* dijkstraAlg;
 	FillGraph* fillGraph;
 	const int FILL_WIDTH = 100;
 	bool isFinished = false;
@@ -27,6 +29,7 @@ private:
 	int getOption();
 	std::string getFileName();
 	size_t getVertexNum();
+	size_t getVertex();
 	size_t getDensity();
 	bool getDirectory();
 	void chooseOption(int option);

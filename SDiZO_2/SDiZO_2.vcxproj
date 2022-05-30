@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Headers\algorithms\Dijkstra.h" />
     <ClInclude Include="Headers\algorithms\Kruskal.h" />
     <ClInclude Include="Headers\algorithms\Prim.h" />
     <ClInclude Include="Headers\Edge.h" />
@@ -155,6 +156,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="src\algorithms\Kruskal.cpp" />
     <ClCompile Include="src\algorithms\Prim.cpp" />
+    <ClCompile Include="src\algorithms\Dijkstra.cpp" />
     <ClCompile Include="src\ListGraph.cpp" />
     <ClCompile Include="src\MatrixGraph.cpp" />
     <ClCompile Include="src\menus\ListTest.cpp" />

@@ -72,11 +72,11 @@ void Graphs::EdgeHeapMin::heapifyMin(size_t index)
 	size_t right = getRightChild(index);
 
 	//determine which is the lowest
-	if (left<this->size && root[left]->value < root[index]->value)
+	if (left<this->size && root[left]->weight < root[index]->weight)
 		minimum = left;
 	else
 		minimum = index;
-	if (right<this->size && root[right]->value < root[minimum]->value)
+	if (right<this->size && root[right]->weight < root[minimum]->weight)
 		minimum = right;
 
 	if (minimum != index)
@@ -140,7 +140,7 @@ void Graphs::EdgeHeapMin::print(std::ostream& out)
 			out << std::string(numOfMinus, ' ');
 			for (size_t i = 0; i < numOfLevelElements; i++)
 			{
-				out << "/" << std::string(numOfMinus, '-') << this->root[index]->value;
+				out << "/" << std::string(numOfMinus, '-') << this->root[index]->weight;
 				out << std::string(numOfMinus, '-') << "\\" << std::string(numOfSpace, ' ');
 				index++;
 			}
@@ -149,7 +149,7 @@ void Graphs::EdgeHeapMin::print(std::ostream& out)
 		out << height << ".";
 		while (index < this->size)
 		{
-			out << this->root[index]->value << " ";
+			out << this->root[index]->weight << " ";
 			index++;
 		}
 		out << std::endl;

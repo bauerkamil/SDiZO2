@@ -7,6 +7,7 @@
 #include "../menus/ListTest.h"
 #include "../algorithms/Kruskal.h"
 #include "../algorithms/Prim.h"
+#include "../algorithms/Dijkstra.h"
 #include "../utils/FillGraph.h"
 
 class Menu
@@ -25,6 +26,7 @@ private:
 	ListTest* listTest;
 	Graphs::Kruskal* kruskalAlg;
 	Graphs::Prim* primAlg;
+	Graphs::Dijkstra* dijkstraAlg;
 	FillGraph* fillGraph;
 	bool isFinished;
 };

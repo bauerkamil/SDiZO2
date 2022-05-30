@@ -1,10 +1,11 @@
 #include "../../Headers/menus/MatrixTest.h"
 
-MatrixTest::MatrixTest(FillGraph* fillGraph, Graphs::Kruskal* kruskalAlg, Graphs::Prim* primAlg)
+MatrixTest::MatrixTest(FillGraph* fillGraph, Graphs::Kruskal* kruskalAlg, Graphs::Prim* primAlg, Graphs::Dijkstra* dijkstraAlg)
 {
 	this->fillGraph = fillGraph;
 	this->kruskalAlg = kruskalAlg;
 	this->primAlg = primAlg;
+	this->dijkstraAlg = dijkstraAlg;
 }
 
 MatrixTest::~MatrixTest()

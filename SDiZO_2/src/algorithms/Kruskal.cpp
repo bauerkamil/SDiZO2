@@ -199,7 +199,7 @@ void Graphs::Kruskal::printMST(std::ostream& out, Edge** mst, size_t vertexNum)
 				}
 				out << "(F: " << edge->source
 					<< " To: " << edge->destination
-					<< " V: " << edge->value
+					<< " V: " << edge->weight
 					<< ")\n";
 			}
 
