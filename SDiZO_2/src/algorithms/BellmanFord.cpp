@@ -156,7 +156,7 @@ void Graphs::BellmanFord::printMinPaths(std::ostream& out, int** paths, size_t v
 
 void Graphs::BellmanFord::printMinPath(std::ostream& out, int** paths, size_t vertexNum, size_t destination)
 {
-	if (destination > vertexNum)
+	if (destination >= vertexNum)
 	{
 		throw* invalid_vertex;
 	}

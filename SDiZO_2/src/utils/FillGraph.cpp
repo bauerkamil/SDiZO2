@@ -80,7 +80,7 @@ void FillGraph::fillRandom(size_t vertexNum, size_t densityPercent, bool isDirec
 {
 	clear();
 
-	std::cout << "V: " << vertexNum << " D: " << densityPercent << " Dir " << isDirected << std::endl;
+	//std::cout << "V: " << vertexNum << " D: " << densityPercent << " Dir " << isDirected << std::endl;
 
 	if (vertexNum == 0)
 	{
@@ -89,7 +89,6 @@ void FillGraph::fillRandom(size_t vertexNum, size_t densityPercent, bool isDirec
 
 	size_t edgeNum = (size_t)floor(vertexNum * (vertexNum - 1) * densityPercent / 200);
 
-	std::cout << edgeNum << std::endl;
 
 	if (edgeNum < vertexNum || densityPercent > 100)
 	{
@@ -193,8 +192,8 @@ void FillGraph::fillRandomDirected(size_t vertexNum, size_t edgeNum, size_t dens
 		{
 			if (adjencyMatrix[i][j] != 0)
 			{
-				this->edgeList[pos][0] = j;
-				this->edgeList[pos][1] = i;
+				this->edgeList[pos][0] = i;
+				this->edgeList[pos][1] = j;
 				this->edgeList[pos][2] = adjencyMatrix[i][j];
 				pos++;
 			}
@@ -229,7 +228,7 @@ void FillGraph::fillRandomNonDirected(size_t vertexNum, size_t edgeNum, size_t d
 
 	}
 
-	std::cout << "step";
+	//std::cout << "step";
 	addedVertex[0] = true;
 	//create mst
 	for (size_t i = 1; i < vertexNum; i++)
@@ -238,10 +237,10 @@ void FillGraph::fillRandomNonDirected(size_t vertexNum, size_t edgeNum, size_t d
 
 		while (addedVertex[destination] == false)
 		{
-			std::cout << destination << " ";
+			//std::cout << destination << " ";
 			destination = rand() % vertexNum;
 		}
-		std::cout << destination << "\n";
+		//std::cout << destination << "\n";
 
 		size_t weight = rand() % 100;
 		while (weight == 0)
@@ -250,7 +249,8 @@ void FillGraph::fillRandomNonDirected(size_t vertexNum, size_t edgeNum, size_t d
 		}
 
 		adjencyMatrix[i][destination] = weight;
-		std::cout << i << " " << destination << " " << weight << std::endl;
+		adjencyMatrix[destination][i] = weight;
+		//std::cout << i << " " << destination << " " << weight << std::endl;
 
 		addedVertex[i] = true;
 	}
@@ -277,9 +277,9 @@ void FillGraph::fillRandomNonDirected(size_t vertexNum, size_t edgeNum, size_t d
 
 		adjencyMatrix[source][destination] = weight;
 		adjencyMatrix[destination][source] = weight;
+		//std::cout << source << " " << destination << " " << weight << std::endl;
 
 	}
-
 	this->vertexNum = vertexNum;
 	this->edgeNum = edgeNum;
 	this->edgeList = new size_t * [edgeNum];
@@ -288,7 +288,16 @@ void FillGraph::fillRandomNonDirected(size_t vertexNum, size_t edgeNum, size_t d
 		this->edgeList[i] = new size_t[3];
 	}
 
-	std::cout << "EdgeList: \n";
+	//for (size_t i = 0; i < vertexNum; i++)
+	//{
+	//	for (size_t j = 0; j < vertexNum; j++)
+	//	{
+	//		std::cout << adjencyMatrix[i][j] << " ";
+	//	}
+	//	std::cout << std::endl;
+	//}
+
+	//std::cout << "EdgeList: \n";
 	size_t pos = 0;
 	for (size_t i = 0; i < vertexNum; i++)
 	{
@@ -305,7 +314,7 @@ void FillGraph::fillRandomNonDirected(size_t vertexNum, size_t edgeNum, size_t d
 			}
 		}
 	}
-
+	//std::cout << pos;
 
 	for (size_t i = 0; i < vertexNum; i++)
 	{

@@ -11,7 +11,7 @@ Graphs::EdgeHeapMin::EdgeHeapMin(size_t totalSize)
 
 Graphs::EdgeHeapMin::~EdgeHeapMin()
 {
-	clear();
+	clear(false);
 }
 
 void Graphs::EdgeHeapMin::add(Edge* element)
@@ -24,6 +24,11 @@ void Graphs::EdgeHeapMin::add(Edge* element)
 	this->root[this->size] = element;
 
 	this->size++;
+
+	if (size == 1)
+	{
+		return;
+	}
 
 	buildHeap();
 }
@@ -67,17 +72,22 @@ Graphs::Edge* Graphs::EdgeHeapMin::extractRoot()
 
 void Graphs::EdgeHeapMin::heapifyMin(size_t index)
 {
-	size_t minimum;
+	size_t minimum = index;
 	size_t left = getLeftChild(index);
 	size_t right = getRightChild(index);
 
 	//determine which is the lowest
-	if (left<this->size && root[left]->weight < root[index]->weight)
-		minimum = left;
-	else
-		minimum = index;
-	if (right<this->size && root[right]->weight < root[minimum]->weight)
-		minimum = right;
+	if (left < this->size)
+	{
+		if (root[left]->weight < root[index]->weight)
+			minimum = left;
+	}
+
+	if (right < this->size)
+	{
+		if (root[right]->weight < root[minimum]->weight)
+			minimum = right;
+	}
 
 	if (minimum != index)
 	{
@@ -106,8 +116,15 @@ void Graphs::EdgeHeapMin::swap(size_t index1, size_t index2)
 	this->root[index2] = value;
 }
 
-void Graphs::EdgeHeapMin::clear()
+void Graphs::EdgeHeapMin::clear(bool clearEdges)
 {
+	if (clearEdges)
+	{
+		for (size_t i = 0; i < size; i++)
+		{
+			delete this->root[i];
+		}
+	}
 	if (this->root != nullptr)
 	{
 		delete[] this->root;

@@ -35,15 +35,15 @@ Graphs::Edge** Graphs::Kruskal::getMST(MatrixGraph* graph)
 
 	for (size_t i = 0; i < edgeNum; i++)
 	{
-		size_t weight = 0;
+		size_t weight = SIZE_MAX;
 		size_t source;
-		size_t destination;
+		size_t destination = SIZE_MAX;
 
 		for (size_t j = 0; j < vertexNum; j++)
 		{
 			if (incidenceMatrix[j][i] != 0)
 			{
-				if (weight == 0)
+				if (weight == SIZE_MAX)
 				{
 					weight = incidenceMatrix[j][i];
 					source = j;
@@ -52,6 +52,10 @@ Graphs::Edge** Graphs::Kruskal::getMST(MatrixGraph* graph)
 					destination = j;
 
 			}
+		}
+		if (destination == SIZE_MAX)
+		{
+			destination = source;
 		}
 
 		Edge* newEdge = new Graphs::Edge(weight, source, destination);
@@ -100,6 +104,7 @@ Graphs::Edge** Graphs::Kruskal::getMST(MatrixGraph* graph)
 			break;
 	}
 
+	heap->clear(true);
 	delete heap;
 	return mst;
 }

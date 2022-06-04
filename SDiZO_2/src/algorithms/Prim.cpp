@@ -36,7 +36,7 @@ Graphs::Edge** Graphs::Prim::getMST(MatrixGraph* graph)
 	{
 		if (incidenceMatrix[0][i] != 0)
 		{
-			size_t destination;
+			size_t destination = SIZE_MAX;
 			size_t weight = incidenceMatrix[0][i];
 
 			for (size_t j = 1; j < vertexNum; j++)
@@ -46,9 +46,13 @@ Graphs::Edge** Graphs::Prim::getMST(MatrixGraph* graph)
 					destination = j;
 				}
 			}
+			if (destination == SIZE_MAX)
+			{
+				destination = 0;
+			}
 
 			Edge* newEdge = new Graphs::Edge(weight, 0, destination);
-			std::cout << newEdge->destination << " " << newEdge->weight << std::endl;
+			//std::cout << newEdge->destination << " " << newEdge->weight << std::endl;
 			heap->add(newEdge);
 		}
 	}
@@ -70,7 +74,7 @@ Graphs::Edge** Graphs::Prim::getMST(MatrixGraph* graph)
 				{
 					if (incidenceMatrix[edge->destination][i] != 0)
 					{
-						size_t destination2;
+						size_t destination2 = SIZE_MAX;
 						size_t weight = incidenceMatrix[edge->destination][i];
 
 						for (size_t j = 0; j < vertexNum; j++)
@@ -79,6 +83,10 @@ Graphs::Edge** Graphs::Prim::getMST(MatrixGraph* graph)
 							{
 								destination2 = j;
 							}
+						}
+						if (destination2 == SIZE_MAX)
+						{
+							destination2 = edge->destination;
 						}
 
 						Edge* newEdge = new Graphs::Edge(weight, edge->destination, destination2);
@@ -98,6 +106,7 @@ Graphs::Edge** Graphs::Prim::getMST(MatrixGraph* graph)
 			break;
 	}
 
+	heap->clear(true);
 	delete heap;
 	return mst;
 }

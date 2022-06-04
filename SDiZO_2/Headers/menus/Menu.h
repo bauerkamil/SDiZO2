@@ -4,7 +4,8 @@
 #include <iostream>
 #include <iomanip>
 #include "MatrixTest.h"
-#include "../menus/ListTest.h"
+#include "ListTest.h"
+#include "AutoTest.h"
 #include "../algorithms/Kruskal.h"
 #include "../algorithms/Prim.h"
 #include "../algorithms/Dijkstra.h"

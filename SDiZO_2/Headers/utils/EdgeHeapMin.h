@@ -26,7 +26,7 @@ namespace Graphs
 		// removes first obj of the Heap and returns it
 		virtual Edge* extractRoot();
 		//clears Heap
-		virtual void clear();
+		virtual void clear(bool clearEdges);
 		// returns the quantity of elements in Heap
 		virtual size_t getSize();
 		// returns the size of Heap

@@ -1,12 +1,2 @@
-﻿  BellmanFord.cpp
-C:\Users\kamil\OneDrive - Politechnika Wroclawska\Desktop\studia\sdizo_projekt\project2\SDiZO_2\SDiZO_2\src\algorithms\BellmanFord.cpp(56,54): warning C4267: "=": konwersja z "size_t" do "int", możliwa utrata danych
-C:\Users\kamil\OneDrive - Politechnika Wroclawska\Desktop\studia\sdizo_projekt\project2\SDiZO_2\SDiZO_2\src\algorithms\BellmanFord.cpp(57,31): warning C4267: "=": konwersja z "size_t" do "int", możliwa utrata danych
-C:\Users\kamil\OneDrive - Politechnika Wroclawska\Desktop\studia\sdizo_projekt\project2\SDiZO_2\SDiZO_2\src\algorithms\BellmanFord.cpp(116,59): warning C4267: "=": konwersja z "size_t" do "int", możliwa utrata danych
-C:\Users\kamil\OneDrive - Politechnika Wroclawska\Desktop\studia\sdizo_projekt\project2\SDiZO_2\SDiZO_2\src\algorithms\BellmanFord.cpp(117,36): warning C4267: "=": konwersja z "size_t" do "int", możliwa utrata danych
-  Dijkstra.cpp
-C:\Users\kamil\OneDrive - Politechnika Wroclawska\Desktop\studia\sdizo_projekt\project2\SDiZO_2\SDiZO_2\src\algorithms\Dijkstra.cpp(61,53): warning C4267: "=": konwersja z "size_t" do "int", możliwa utrata danych
-C:\Users\kamil\OneDrive - Politechnika Wroclawska\Desktop\studia\sdizo_projekt\project2\SDiZO_2\SDiZO_2\src\algorithms\Dijkstra.cpp(62,30): warning C4267: "=": konwersja z "size_t" do "int", możliwa utrata danych
-C:\Users\kamil\OneDrive - Politechnika Wroclawska\Desktop\studia\sdizo_projekt\project2\SDiZO_2\SDiZO_2\src\algorithms\Dijkstra.cpp(152,57): warning C4267: "=": konwersja z "size_t" do "int", możliwa utrata danych
-C:\Users\kamil\OneDrive - Politechnika Wroclawska\Desktop\studia\sdizo_projekt\project2\SDiZO_2\SDiZO_2\src\algorithms\Dijkstra.cpp(153,34): warning C4267: "=": konwersja z "size_t" do "int", możliwa utrata danych
-  Generowanie kodu...
+﻿  AutoTest.cpp
   SDiZO_2.vcxproj -> C:\Users\kamil\OneDrive - Politechnika Wroclawska\Desktop\studia\sdizo_projekt\project2\SDiZO_2\x64\Debug\SDiZO_2.exe

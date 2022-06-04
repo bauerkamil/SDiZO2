@@ -37,6 +37,7 @@ void Menu::printMenu()
 		<< "Please choose one of following options : \n"
 		<< "1. Matrix implementation\n"
 		<< "2. List implementation\n"
+		<< "3. Auto tests\n"
 		<< "0. Exit" << endl;
 }
 
@@ -59,6 +60,12 @@ void Menu::chooseOption(int choice)
 	case 2:
 	{
 		this->listTest->run();
+	}
+	break;
+	case 3:
+	{
+		AutoTest* autoT = new AutoTest(fillGraph, kruskalAlg, primAlg, dijkstraAlg, bfAlg);
+		delete autoT;
 	}
 	break;
 

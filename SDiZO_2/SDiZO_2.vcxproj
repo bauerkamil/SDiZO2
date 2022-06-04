@@ -147,11 +147,13 @@
     <ClInclude Include="Headers\ListGraph.h" />
     <ClInclude Include="Headers\GraphListNode.h" />
     <ClInclude Include="Headers\MatrixGraph.h" />
+    <ClInclude Include="Headers\menus\AutoTest.h" />
     <ClInclude Include="Headers\menus\ListTest.h" />
     <ClInclude Include="Headers\menus\MatrixTest.h" />
     <ClInclude Include="Headers\menus\Menu.h" />
     <ClInclude Include="Headers\utils\EdgeHeapMin.h" />
     <ClInclude Include="Headers\utils\FillGraph.h" />
+    <ClInclude Include="Headers\utils\Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -161,11 +163,13 @@
     <ClCompile Include="src\algorithms\Dijkstra.cpp" />
     <ClCompile Include="src\ListGraph.cpp" />
     <ClCompile Include="src\MatrixGraph.cpp" />
+    <ClCompile Include="src\menus\AutoTest.cpp" />
     <ClCompile Include="src\menus\ListTest.cpp" />
     <ClCompile Include="src\menus\MatrixTest.cpp" />
     <ClCompile Include="src\menus\Menu.cpp" />
     <ClCompile Include="src\utils\EdgeHeapMin.cpp" />
     <ClCompile Include="src\utils\FillGraph.cpp" />
+    <ClCompile Include="src\utils\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="d.txt" />

@@ -182,7 +182,7 @@ void MatrixTest::chooseOption(int choice)
 	{
 		if (testGraph->getIsDirected() == false)
 		{
-			std::cout << "The graph ought to be directed" << std::endl;
+			std::cout << "The graph ought to be directed\n" << std::endl;
 		}
 		else
 		{
@@ -232,7 +232,7 @@ size_t MatrixTest::getVertex()
 
 size_t MatrixTest::getDensity()
 {
-	std::cout << "Please enter density of graphn";
+	std::cout << "Please enter density of graph\n";
 	size_t option;
 	std::cin >> option;
 
